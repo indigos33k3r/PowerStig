@@ -905,6 +905,11 @@ function Test-MultipleRegistryEntries
             return $false
         }
 
+        if ($matches -match "32-Bit" -and $matches -match "64-Bit" )
+        {
+            return $false
+        }
+
         if ( $matches.Matches.Count -gt 1 )
         {
             return $true

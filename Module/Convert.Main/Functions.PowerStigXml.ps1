@@ -564,6 +564,9 @@ function Split-BenchmarkId
         'PowerPoint',
         'Word'
     )
+    $mcAfeeVariations = @(
+        'McAfee'
+    )
 
     $id = $id -replace ($idVariations -join '|'), ''
 
@@ -582,7 +585,7 @@ function Split-BenchmarkId
         }
         {$PSItem -match "Domain_Name_System"}
         {
-             # The Windows Server 2012 and 2012 R2 STIGs are combined, so return the 2012R2
+            # The Windows Server 2012 and 2012 R2 STIGs are combined, so return the 2012R2
             $id = $id -replace '_2012_', '_2012R2_'
             $returnId = $id -replace ($dnsServerVariations -join '|'), 'DNS'
             $returnId = $returnId -replace ($windowsVariations -join '|'), 'Windows'
@@ -619,6 +622,10 @@ function Split-BenchmarkId
             $officeStig = ($id -split '_')
             $officeStig = $officeStig[1] + $officeStig[2]
             $returnId = 'Windows_All_' + $officeStig
+        }
+        {$PSItem -match 'McAfee_'}
+        {
+            $returnId = "Windows_All_" + -join ($id -split '_')
         }
         default
         {
