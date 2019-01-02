@@ -45,6 +45,7 @@ foreach ($supportFile in ( Get-ChildItem -Path "$PSScriptRoot\Module\Convert.Mai
 Export-ModuleMember -Function @(
     'ConvertFrom-StigXccdf',
     'ConvertTo-PowerStigXml',
+    'Compare-PowerStigXccdf',
     'Compare-PowerStigXml',
     'Get-ConversionReport',
     'Split-StigXccdf'

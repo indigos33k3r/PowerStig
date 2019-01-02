@@ -254,7 +254,7 @@ function ConvertTo-PowerStigXml
     .PARAMETER NewStigPath
         The full path to the current PowerStigXml file to convert.
 #>
-function Compare-PowerStigXml
+function Compare-PowerStigXccdf
 {
     [CmdletBinding()]
     [OutputType([psobject])]
@@ -358,6 +358,81 @@ function Compare-PowerStigXml
     {
         $global:VerbosePreference = $CurrentVerbosePreference
     }
+}
+
+function Compare-PowerStigXml
+{
+    [CmdletBinding()]
+    [OutputType([psobject])]
+    param
+    (
+        [Parameter(Mandatory = $true)]
+        [string]
+        $StigXccdfPath,
+
+        [Parameter(Mandatory = $true)]
+        [string]
+        $StigXmlPath
+    )
+
+    $ruleResults = [ordered] @{
+        NewRule         = @()
+        RemovedRule     = @()
+        RuleTypeChange  = @()
+        RuleValueChange = @()
+    }
+
+    $oldRuleId = @()
+    
+    # Get new Stig content by conversion 
+    $newStigContent = ConvertFrom-StigXccdf -Path $StigXccdfPath -IncludeRawString
+    # Get old Stig content 
+    [xml] $oldStigContent = Get-Content -Path $StigXmlPath
+
+    $ruleTypes = (Get-Member -InputObject $oldStigContent.DISASTIG | Where-Object -FilterScript {$_.Name -match '.*Rule'}).Name
+    # Foreach RuleType in old/new content
+    foreach ($ruleType in $ruleTypes)
+    {
+        foreach ($differenceRule in $newStigContent.DISASTIG.$ruleType.Rule)
+        {
+            $oldRuleId += $differenceRule.id
+            $referenceRule = $oldStigContent | Where-Object -FilterScript {$_.id -eq $differenceRule.id}
+
+            if ($null -ne $referenceRule)
+            {
+                if ($referenceRule.ToString() -ne $ruleType)
+                {
+                    Write-Verbose -Message "Rule $($differenceRule) is not of the same type as the current rule."
+                }
+                else
+                {
+                    $difference = Compare-StigRule -ReferenceRule $referenceRule -DiffererenceRule $differenceRule
+
+                    if ($null -ne $difference)
+                    {
+                        Write-Verbose -Message "Rule $($differenceRule.id) has been changed."
+                    }
+                    else
+                    {
+                        Write-Verbose -Message "Rule $($differenceRule.id) is not changed."
+                    }
+                }
+            }
+        }
+
+        $NewAndRemovedRuleId = Get-AddedOrRemovedRuleId -NewId $newStigContent.Id -OldId $oldRuleId
+
+        $ruleResults.NewRule = $NewAndRemovedRuleId.New
+        $ruleResults.OldRule = $NewAndRemovedRuleId.Old
+    }
+
+        # retrieve matching rule from oposite content and compare
+
+        # If there is no difference, continue
+
+        # if there are differences found, collect the objects difference and add an object to a collection 
+
+
 }
 #endregion
 
@@ -663,4 +738,36 @@ function Get-StigObjectsWithOrgSettings
     $ConvertedStigObjects |
         Where-Object { $PSitem.OrganizationValueRequired -eq $true}
 }
+
 #endregion
+
+function Get-AddedOrRemovedRuleId
+{
+    param
+    (
+        [Parameter(Mandatory = $true)]
+        [array]
+        $NewId,
+
+        [Parameter(Mandatory = $true)]
+        [array]
+        $OldId
+    )
+
+    $returnId = 
+
+}
+
+function Compare-StigRule
+{
+    param
+    (
+        [Parameter(Mandatory = $true)]
+        $ReferenceRule,
+
+        [Parameter(Mandatory = $true)]
+        $DifferenceRule
+    )
+
+    if ()
+}
