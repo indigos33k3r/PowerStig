@@ -393,10 +393,10 @@ function Compare-PowerStigXml
     # Foreach RuleType in old/new content
     foreach ($ruleType in $ruleTypes)
     {
-        foreach ($differenceRule in $newStigContent)
+        foreach ($differenceRule in $oldStigContent.DISASTIG.$ruleType.Rule)
         {
-            $oldRuleId += $differenceRule.Id
-            $referenceRule = $oldStigContent | Where-Object -FilterScript {$_.id -eq $differenceRule.id}
+            $oldRuleId += $referenceRule.Id
+            $differenceRule = $oldStigContent | Where-Object -FilterScript {$_.id -eq $referenceRule.id}
 
             if ($null -ne $referenceRule)
             {
