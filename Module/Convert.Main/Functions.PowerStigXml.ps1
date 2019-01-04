@@ -376,7 +376,7 @@ function Compare-PowerStigXml
     )
 
     $ruleResults = [ordered] @{
-        NewRule         = @()
+        AddedRule       = @()
         RemovedRule     = @()
         RuleTypeChange  = @()
         RuleValueChange = @()
@@ -393,16 +393,24 @@ function Compare-PowerStigXml
     # Foreach RuleType in old/new content
     foreach ($ruleType in $ruleTypes)
     {
-        foreach ($differenceRule in $newStigContent.DISASTIG.$ruleType.Rule)
+        foreach ($differenceRule in $newStigContent)
         {
-            $oldRuleId += $differenceRule.id
+            $oldRuleId += $differenceRule.Id
             $referenceRule = $oldStigContent | Where-Object -FilterScript {$_.id -eq $differenceRule.id}
 
             if ($null -ne $referenceRule)
             {
                 if ($referenceRule.ToString() -ne $ruleType)
                 {
-                    Write-Verbose -Message "Rule $($differenceRule) is not of the same type as the current rule."
+                    Write-Verbose -Message "Rule $($differenceRule.Id) is no longer $($referenceRule.ToString) and is now $ruleType"
+
+                    $ruleResults.RuleTypeChange += [ordered]@{
+                        RuleId       = $differenceRule.Id
+                        NewRuleType  = $ruleType
+                        OldRuleType  = $referenceRule.ToString()
+                        NewRawString = $differenceRule.RawString
+                        OldRawString = $referenceRule.RawString
+                    }
                 }
                 else
                 {
@@ -411,6 +419,7 @@ function Compare-PowerStigXml
                     if ($null -ne $difference)
                     {
                         Write-Verbose -Message "Rule $($differenceRule.id) has been changed."
+                        $ruleResults.RuleValueChange += $difference
                     }
                     else
                     {
@@ -422,17 +431,11 @@ function Compare-PowerStigXml
 
         $NewAndRemovedRuleId = Get-AddedOrRemovedRuleId -NewId $newStigContent.Id -OldId $oldRuleId
 
-        $ruleResults.NewRule = $NewAndRemovedRuleId.New
-        $ruleResults.OldRule = $NewAndRemovedRuleId.Old
+        $ruleResults.AddedRule = $NewAndRemovedRuleId.AddedRuleId
+        $ruleResults.RemovedRule = $NewAndRemovedRuleId.RemovedRuleId
     }
 
-        # retrieve matching rule from oposite content and compare
-
-        # If there is no difference, continue
-
-        # if there are differences found, collect the objects difference and add an object to a collection 
-
-
+    return $ruleResults
 }
 #endregion
 
@@ -754,8 +757,12 @@ function Get-AddedOrRemovedRuleId
         $OldId
     )
 
-    $returnId = 
+    $returnId = @{
+        AddedRuleId   = ($NewId | Where-Object -FilterScript {$_ -notin $OldId})
+        RemovedRuleId = ($OldId | Where-Object -FilterScript {$_ -notin $NewId})
+    }
 
+    return $returnId
 }
 
 function Compare-StigRule
@@ -769,5 +776,5 @@ function Compare-StigRule
         $DifferenceRule
     )
 
-    if ()
+    #foreach ($key in $ReferenceRule.)
 }
