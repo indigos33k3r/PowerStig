@@ -393,16 +393,16 @@ function Compare-PowerStigXml
     # Foreach RuleType in old/new content
     foreach ($ruleType in $ruleTypes)
     {
-        foreach ($differenceRule in $oldStigContent.DISASTIG.$ruleType.Rule)
+        foreach ($referenceRule in $oldStigContent.DISASTIG.$ruleType.Rule)
         {
             $oldRuleId += $referenceRule.Id
-            $differenceRule = $oldStigContent | Where-Object -FilterScript {$_.id -eq $referenceRule.id}
+            $differenceRule = $newStigContent | Where-Object -FilterScript {$_.id -eq $referenceRule.id}
 
-            if ($null -ne $referenceRule)
+            if ($null -ne $differenceRule)
             {
-                if ($referenceRule.ToString() -ne $ruleType)
+                if ($differenceRule.ToString() -ne $ruleType)
                 {
-                    Write-Verbose -Message "Rule $($differenceRule.Id) is no longer $($referenceRule.ToString) and is now $ruleType"
+                    Write-Verbose -Message "Rule $($differenceRule.Id) is no longer $ruleType and is now $($differenceRule.ToString)"
 
                     $ruleResults.RuleTypeChange += [ordered]@{
                         RuleId       = $differenceRule.Id
@@ -414,10 +414,14 @@ function Compare-PowerStigXml
                 }
                 else
                 {
-                    $difference = Compare-StigRule -ReferenceRule $referenceRule -DiffererenceRule $differenceRule
+                    $difference = Compare-StigRule -ReferenceRule $referenceRule -DifferenceRule $differenceRule
 
                     if ($null -ne $difference)
                     {
+                        $difference.NewRawString = $differenceRule.RawString
+                        $difference.OldRawString = $referenceRule.RawString
+                        $difference.RuleType = $ruleType
+                        
                         Write-Verbose -Message "Rule $($differenceRule.id) has been changed."
                         $ruleResults.RuleValueChange += $difference
                     }
@@ -433,6 +437,7 @@ function Compare-PowerStigXml
 
         $ruleResults.AddedRule = $NewAndRemovedRuleId.AddedRuleId
         $ruleResults.RemovedRule = $NewAndRemovedRuleId.RemovedRuleId
+        
     }
 
     return $ruleResults
@@ -776,5 +781,225 @@ function Compare-StigRule
         $DifferenceRule
     )
 
-    #foreach ($key in $ReferenceRule.)
+    $propertyNames = Get-RuleProperty -Rule $ReferenceRule
+    $parameters = @{
+        ReferenceRule  = $ReferenceRule
+        DifferenceRule = $DifferenceRule
+        PropertyName   = $propertyNames
+    }
+
+    switch ($DifferenceRule.ToString())
+    {
+        'PermissionRule'
+        {
+            $returnRule = Compare-PermissionRule @parameters
+        }
+        default
+        {
+            $returnRule = Compare-Property @parameters
+        }
+    }
+    
+    if ($null -ne $returnRule.id)
+    {
+        return $returnRule
+    }
+    else 
+    {
+        $null = return
+    }
+}
+
+function Get-RuleProperty
+{
+    param
+    (
+        [Parameter(Mandatory = $true)]
+        $Rule
+    )
+
+    $propertyNames = (Get-Member -InputObject $Rule | Where-Object -FilterScript {$_.MemberType -eq 'Property'}).Name
+    $propertyNames = $propertyNames | Where-Object -FilterScript {$_ -notin $propertiesToRemove}
+
+    return $propertyNames
+}
+
+function Compare-Property
+{
+    param
+    (
+        [Parameter(Mandatory = $true)]
+        $ReferenceRule,
+
+        [Parameter(Mandatory = $true)]
+        $DifferenceRule,
+
+        [Parameter(Mandatory = $true)]
+        [string[]]
+        $PropertyName
+    )
+
+    $return = [ordered] @{}
+
+    foreach ($property in $PropertyName)
+    {
+        if (Test-Property -ReferenceProperty $ReferenceRule.$property -DifferencProperty $DifferenceRule.$property)
+        {
+            if (-not($return.id))
+            {
+                $return.id = $ReferenceRule.id
+            }
+            
+            $return."Old$property" = $ReferenceRule.$property
+            $return."New$property" = $DifferenceRule.$property
+        }
+    }
+
+    if ($null -ne $return.id)
+    {
+        return $return
+    }
+    else 
+    {
+        $null = return 
+    }
+}
+
+function Test-Property
+{
+    param
+    (
+        [Parameter(Mandatory = $true)]
+        [AllowNull()]
+        $ReferenceProperty,
+
+        [Parameter(Mandatory = $true)]
+        [AllowNull()]
+        $DifferencProperty
+    )
+
+    if ($null -eq $ReferenceProperty -or $null -eq $DifferencProperty)
+    {
+        if ($null -eq $ReferenceProperty)
+        {
+            $ReferenceProperty = ''
+        }
+        if ($null -eq $DifferencProperty)
+        {
+            $DifferencProperty = ''
+        }
+
+        $return = $ReferenceProperty -ne $DifferencProperty
+    }
+    else
+    {
+        $return = $ReferenceProperty.ToString() -ne $DifferencProperty.ToString()
+    }
+
+    return $return
+}
+
+function Compare-PermissionRule
+{
+    param
+    (
+        [Parameter(Mandatory = $true)]
+        $ReferenceRule,
+
+        [Parameter(Mandatory = $true)]
+        $DifferenceRule,
+
+        [Parameter(Mandatory = $true)]
+        [string[]]
+        $PropertyName
+    )
+
+    $newPropertyNames = $PropertyName | Where-Object -FilterScript {$_ -ne 'AccessControlEntry'}
+
+    $return = Compare-Property -ReferenceRule $ReferenceRule -DifferenceRule $DifferenceRule -PropertyName $newPropertyNames
+    $accessControlDiff = Compare-AccessControl `
+        -ReferenceList $ReferenceRule.AccessControlEntry.Entry `
+        -DifferenceList $DifferenceRule.AccessControlEntry
+
+    if ($null -ne $return)
+    {
+        if ($null -ne $accessControlDiff)
+        {
+            $return.OldAccessControlEntry = $ReferenceRule.AccessControlEntry.Entry
+            $return.NewAccessControlEntry = $DifferenceRule.AccessControlEntry
+        }
+        
+        return $return
+    }
+    else
+    {
+        if ($null -ne $accessControlDiff)
+        {
+            $return = [ordered] @{
+                id                    = $DifferenceRule.id
+                OldAccessControlEntry = $ReferenceRule.AccessControlEntry.Entry
+                NewAccessControlEntry = $DifferenceRule.AccessControlEntry
+            }
+
+            return $return
+        }
+        else
+        {
+            $null = return
+        }
+    }
+}
+
+function Compare-AccessControl
+{
+    param
+    (
+        [Parameter(Mandatory = $true)]
+        $ReferenceList,
+
+        [Parameter(Mandatory = $true)]
+        $DifferenceList
+    )
+    
+    $returnList = @()
+    $referenceListproperties = Get-RuleProperty -Rule $referenceList[0]
+
+    foreach ($referenceEntry in $ReferenceList)
+    {
+        $differenceEntry = $DifferenceList | Where-Object -FilterScript {$_.Principal -eq $referenceEntry.Principal}
+
+        if ($null -eq $differenceEntry)
+        {
+            $returnList += $referenceEntry
+        }
+        else
+        {
+            foreach ($property in $referenceListproperties)
+            {
+                if (Test-Property -ReferenceProperty $referenceEntry.$property -DifferencProperty $differenceEntry.$property)
+                {
+                    $returnList += $referenceEntry
+
+                    break
+                }
+            }
+        }
+    }
+
+    # We tested that Reference Entries had a difference companion but nee to do the same for the Difference Entries.
+    foreach ($differenceEntry in $DifferenceList)
+    {
+        $referenceMatch = $ReferenceList | Where-Object -FilterScript {$_.Principal -eq $differenceEntry.Principal}
+        if ($null -eq $referenceMatch)
+        {
+            $returnList += $referenceMatch
+        }
+    }
+
+    if ($returnList.Count -gt 0)
+    {
+        return $returnList
+    }
+
+    $null = return
 }

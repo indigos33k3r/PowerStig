@@ -56,3 +56,14 @@ data dscResourceModule
         FileContentRule                 = FileContentDsc
 '@
 }
+
+data propertiesToRemove
+{
+    'id'
+    'severity'
+    'conversionstatus'
+    'title'
+    'dscresource'
+    'dscresourcemodule'
+    'RawString'
+}
