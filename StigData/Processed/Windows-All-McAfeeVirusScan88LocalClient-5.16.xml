@@ -1,4 +1,4 @@
-<DISASTIG id="McAfee_VirusScan88_Local_Client" version="5.16" created="12/12/2018">
+<DISASTIG id="McAfee_VirusScan88_Local_Client" version="5.16" created="1/8/2019">
   <DocumentRule dscresourcemodule="None">
     <Rule id="V-42561" severity="medium" conversionstatus="pass" title="DTAM150-Access Protection mass mailing worms" dscresource="None">
       <IsNullOrEmpty>False</IsNullOrEmpty>
@@ -20,54 +20,6 @@ If "Prevent mass mailing worms from sending email" (Block and Report) options ar
     </Rule>
   </DocumentRule>
   <ManualRule dscresourcemodule="None">
-    <Rule id="V-19910" severity="high" conversionstatus="pass" title="DTAG008 - The antivirus signature file age exceeds 7 days." dscresource="None">
-      <IsNullOrEmpty>False</IsNullOrEmpty>
-      <OrganizationValueRequired>False</OrganizationValueRequired>
-      <OrganizationValueTestString />
-      <RawString>Access the local VirusScan console by clicking Start &gt;&gt; All Programs &gt;&gt; McAfee &gt;&gt; VirusScan Console.
-
-Click Help &gt;&gt; About VirusScan Enterprise.
-
-The “About” dialog box will be displayed, showing, among other information, the current DAT version installed and the date of that DAT version.
-Guidance in DTAM016 requires updates be run daily, automatically or manually. If compliant, the DAT date will be within 24-48 hours old. Since automated update tasks’ success is not guaranteed, the expectation is for update task success to be frequently monitored and corrected when unsuccessful. To allow for that correction, the minimum acceptable threshold for DAT date is not to exceed 7 days. 
-
-If the DAT date displayed is more than “7” days old, this is a finding.
-
-If the vendor or trusted site's files match the date of the signature files on the machine, this is not a finding.
-</RawString>
-    </Rule>
-    <Rule id="V-19910" severity="high" conversionstatus="pass" title="DTAG008 - The antivirus signature file age exceeds 7 days." dscresource="None">
-      <IsNullOrEmpty>False</IsNullOrEmpty>
-      <OrganizationValueRequired>False</OrganizationValueRequired>
-      <OrganizationValueTestString />
-      <RawString>Access the local VirusScan console by clicking Start &gt;&gt; All Programs &gt;&gt; McAfee &gt;&gt; VirusScan Console.
-
-Click Help &gt;&gt; About VirusScan Enterprise.
-
-The “About” dialog box will be displayed, showing, among other information, the current DAT version installed and the date of that DAT version.
-Guidance in DTAM016 requires updates be run daily, automatically or manually. If compliant, the DAT date will be within 24-48 hours old. Since automated update tasks’ success is not guaranteed, the expectation is for update task success to be frequently monitored and corrected when unsuccessful. To allow for that correction, the minimum acceptable threshold for DAT date is not to exceed 7 days. 
-
-If the DAT date displayed is more than “7” days old, this is a finding.
-
-If the vendor or trusted site's files match the date of the signature files on the machine, this is not a finding.
-</RawString>
-    </Rule>
-    <Rule id="V-19910" severity="high" conversionstatus="pass" title="DTAG008 - The antivirus signature file age exceeds 7 days." dscresource="None">
-      <IsNullOrEmpty>False</IsNullOrEmpty>
-      <OrganizationValueRequired>False</OrganizationValueRequired>
-      <OrganizationValueTestString />
-      <RawString>Access the local VirusScan console by clicking Start &gt;&gt; All Programs &gt;&gt; McAfee &gt;&gt; VirusScan Console.
-
-Click Help &gt;&gt; About VirusScan Enterprise.
-
-The “About” dialog box will be displayed, showing, among other information, the current DAT version installed and the date of that DAT version.
-Guidance in DTAM016 requires updates be run daily, automatically or manually. If compliant, the DAT date will be within 24-48 hours old. Since automated update tasks’ success is not guaranteed, the expectation is for update task success to be frequently monitored and corrected when unsuccessful. To allow for that correction, the minimum acceptable threshold for DAT date is not to exceed 7 days. 
-
-If the DAT date displayed is more than “7” days old, this is a finding.
-
-If the vendor or trusted site's files match the date of the signature files on the machine, this is not a finding.
-</RawString>
-    </Rule>
     <Rule id="V-19910" severity="high" conversionstatus="pass" title="DTAG008 - The antivirus signature file age exceeds 7 days." dscresource="None">
       <IsNullOrEmpty>False</IsNullOrEmpty>
       <OrganizationValueRequired>False</OrganizationValueRequired>
@@ -488,4 +440,83 @@ Under the Access Protection tab, locate the "Access protection rules:" label. In
 Criteria:  If the "Prevent all programs from running files from the Temp folder" (Block and Report) option is selected, this is not a finding.</RawString>
     </Rule>
   </ManualRule>
+  <RegistryRule dscresourcemodule="xPSDesiredStateConfiguration">
+    <Rule id="V-42549" severity="high" conversionstatus="pass" title="DTAM138 - Access Protection McAfee services protection" dscresource="xRegistry">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKLM\Software\McAfee\ (32-bit) HKLM\Software\Wow6432Node\McAfee\ (64-bit) System.Object[]</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>Note: If the HIPS signature 3892 is enabled to provide the "Prevent termination of McAfee processes" protection, this check is not applicable. 
+
+Access the local VirusScan console by clicking Start-&gt;All Programs-&gt;McAfee-&gt;VirusScan Console.
+Under the Task column, select Access Protection, right-click, and select Properties.
+
+Under the Access Protection tab, ensure the "Prevent McAfee services from being stopped" option is selected.
+
+Criteria:  If the "Prevent McAfee services from being stopped" option is selected, this is not a finding. 
+
+On the client machine, use the Windows Registry Editor to navigate to the following key:
+HKLM\Software\McAfee\ (32-bit)
+HKLM\Software\Wow6432Node\McAfee\ (64-bit)
+SystemCore\VSCore\On Access Scanner\BehaviourBlocking
+
+Criteria:  If the value of PVSPTEnabled is REG_DWORD = 1, this is not a finding.</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>of PVSPTEnabled</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-42550" severity="medium" conversionstatus="pass" title="DTAM139 - Access Protection logging of scan activity" dscresource="xRegistry">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKLM\Software\McAfee\ (32-bit) HKLM\Software\Wow6432Node\McAfee\ (64-bit) System.Object[]</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>Note: If DTAM161 "McAfee VirusScan Access Protection Policies must be configured to enable access protection" has been marked as "Not Applicable", this requirement is not applicable.
+
+Access the local VirusScan console by clicking Start-&gt;All Programs-&gt;McAfee-&gt;VirusScan Console.
+Under the Task column, select Access Protection, right-click, and select Properties.
+
+Under the Reports tab, locate the "Log File" label. Ensure the "Enable activity logging and accept the default location for the log file or specify a new location" option is selected.
+
+Criteria:  If the "Enable activity logging and accept the default location for the log file or specify a new location" option is selected, this is not a finding.
+
+On the client machine, use the Windows Registry Editor to navigate to the following key:
+HKLM\Software\McAfee\ (32-bit)
+HKLM\Software\Wow6432Node\McAfee\ (64-bit)
+SystemCore\VSCore\On Access Scanner\BehaviourBlocking
+
+Criteria:  If the value of bLogToFile is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>of bLogToFile</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-42550" severity="medium" conversionstatus="pass" title="DTAM139 - Access Protection logging of scan activity" dscresource="xRegistry">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKLM\Software\McAfee\ (32-bit) HKLM\Software\Wow6432Node\McAfee\ (64-bit) System.Object[]</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>Note: If DTAM161 "McAfee VirusScan Access Protection Policies must be configured to enable access protection" has been marked as "Not Applicable", this requirement is not applicable.
+
+Access the local VirusScan console by clicking Start-&gt;All Programs-&gt;McAfee-&gt;VirusScan Console.
+Under the Task column, select Access Protection, right-click, and select Properties.
+
+Under the Reports tab, locate the "Log File" label. Ensure the "Enable activity logging and accept the default location for the log file or specify a new location" option is selected.
+
+Criteria:  If the "Enable activity logging and accept the default location for the log file or specify a new location" option is selected, this is not a finding.
+
+On the client machine, use the Windows Registry Editor to navigate to the following key:
+HKLM\Software\McAfee\ (32-bit)
+HKLM\Software\Wow6432Node\McAfee\ (64-bit)
+SystemCore\VSCore\On Access Scanner\BehaviourBlocking
+
+Criteria:  If the value of bLogToFile is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>of bLogToFile</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+  </RegistryRule>
 </DISASTIG>

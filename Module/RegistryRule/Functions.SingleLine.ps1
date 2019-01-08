@@ -84,12 +84,21 @@ function Get-SingleLineRegistryPath
     {
         $fullRegistryPath = $fullRegistryPath.ToString() | Select-String -Pattern "((HKLM|HKCU).*(?=\sis.*REG_DWORD))"
     }
-    if ($CheckContent -match "((HKLM|HKCU|HKEY_LOCAL_MACHINE|HKEY_CURRENT_USER).*)")
+<#    if ($CheckContent -match "((HKLM|HKCU|HKEY_LOCAL_MACHINE|HKEY_CURRENT_USER).*)")
     {
         $line1 = $CheckContent | Select-String -Pattern "((HKLM|HKCU|HKEY_LOCAL_MACHINE|HKEY_CURRENT_USER).*(?=\\\s\(64-bit))"
         $Line2 = $CheckContent | Select-String -Pattern "(SystemCore.*)"
         $fullpath = "$($Line1.matches[0])$Line2"  #-replace "(\\(\s).*64-bit).*\)", ""
-        $fullpath
+        $fullpath#>
+    }
+    if ($CheckContent -match "((HKLM|HKCU|HKEY_LOCAL_MACHINE|HKEY_CURRENT_USER).*(McAfee))")
+    {
+        $newCheckContent = [string]::Join('`n', $checkContent)
+        $newCheckContent | Select-String -Pattern "((HKLM|HKCU|HKEY_LOCAL_MACHINE|HKEY_CURRENT_USER).*(?=\s\(64-bit\)$)).*(\n.*$)"
+        $newCheckContent
+        #$newCheckContent = $CheckContent | Select-String -Pattern "((HKLM|HKCU|HKEY_LOCAL_MACHINE|HKEY_CURRENT_USER).*(?=\\\s\(64-bit))"
+        #$fullRegistryPath = $CheckContent | Select-String -Pattern "((HKLM|HKCU|HKEY_LOCAL_MACHINE|HKEY_CURRENT_USER).*(?=\s\(64-bit\))).*(\s)(.*)(\n.*$)"
+        #$fullRegistryPath
     }
 
     $fullRegistryPath = $fullRegistryPath.Matches.Value
