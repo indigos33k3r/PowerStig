@@ -128,6 +128,11 @@ function Get-SLRegistryPath
                 Select 
                 { 
                     $regEx = '{0}' -f $Hashtable.Item($key)
+                    if (($CheckContent -join ' ') -match 'McAfee.*32-bit.*64-bit')
+                    {
+                        $CheckContent = $CheckContent -join ' '
+                    }
+
                     $selectedRegistryPath = $CheckContent | Select-String -Pattern $regEx
                     if ([string]::IsNullOrEmpty($selectedRegistryPath))
                     {
@@ -153,8 +158,12 @@ function Get-SLRegistryPath
             "*HKCU*" {$matchedRegistryPath = $matchedRegistryPath -replace "^HKCU", "HKEY_CURRENT_USER"}
 
             "*Software Publishing Criteria" {$matchedRegistryPath = $matchedRegistryPath -replace 'Software Publishing Criteria$','Software Publishing'}
-        }
 
+            ".*\(64-bit\) \\.*" {$matchedRegistryPath = $matchedRegistryPath -replace ' \(64-bit\) \\', ''}
+
+            '.*\(64-bit\)\s\w+' {$matchedRegistryPath = $matchedRegistryPath -replace ' \(64-bit\) ', ''}
+        }
+        
         $result = $matchedRegistryPath.ToString().trim(' ', '.')
 
         Write-Verbose "[$($MyInvocation.MyCommand.Name)] Trimmed path : $result"

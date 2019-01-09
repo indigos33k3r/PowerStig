@@ -11,8 +11,8 @@
 #>
 $global:SingleLineRegistryPath += [ordered]@{
     McAfeeOne = [ordered]@{
-        Match    = '(HKCU|HKLM|HKEY_LOCAL_MACHINE|HKEY_CURRENT_USER)\\'
-        Select   = '((HKLM|HKCU|HKEY_LOCAL_MACHINE|HKEY_CURRENT_USER).*(?=\s\(64-bit\)$)).*(\n.*$)'
+        Match    = '(HKCU|HKLM|HKEY_LOCAL_MACHINE|HKEY_CURRENT_USER)\\.*(?=\s\(64-bit\))'
+        Select   = '((HKLM|HKCU|HKEY_LOCAL_MACHINE|HKEY_CURRENT_USER)\\Software\\Wow6432Node.*\s\(64-bit\).*(?=\sCriteria))'
     }
 }
 
@@ -24,7 +24,7 @@ $global:SingleLineRegistryValueName += [ordered]@{
 
 $global:SingleLineRegistryValueType += [ordered]@{
     McAfeeOne   = @{
-        Select = '((HKLM|HKCU|HKEY_LOCAL_MACHINE|HKEY_CURRENT_USER).*(?=\s\(64-bit\)$)).*(\n.*$)'
+        Select = '((HKLM|HKCU|HKEY_LOCAL_MACHINE|HKEY_CURRENT_USER)\\Software\\Wow6432Node.*(?=\s\(64-bit\)$)).*(.*$)'
     }
 }
 

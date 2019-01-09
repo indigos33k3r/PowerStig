@@ -905,6 +905,11 @@ function Test-MultipleRegistryEntries
             return $false
         }
 
+        if ($matches.Matches.Count -gt 1 -and ($CheckContent -join ' ') -match 'McAfee.*32-bit.*64-bit')
+        {
+            return $false
+        }
+
         if ( $matches.Matches.Count -gt 1 )
         {
             return $true
