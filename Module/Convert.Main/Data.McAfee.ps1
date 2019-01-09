@@ -11,14 +11,13 @@
 #>
 $global:SingleLineRegistryPath += [ordered]@{
     McAfee1 = [ordered]@{
-    Root = [ordered]@{
         Match    = '(HKCU|HKLM|HKEY_LOCAL_MACHINE|HKEY_CURRENT_USER)\\'
         Select   = '((HKLM|HKCU|HKEY_LOCAL_MACHINE|HKEY_CURRENT_USER).*(?=\s\(64-bit\)$)).*(\n.*$)'
     }
 }
 
 $global:SingleLineRegistryValueName += [ordered]@{
-    One   = @{
+    One = @{
         Select = '(?<=If the value(\s*)?((for( )?)?)").*(")?((?=is.*R)|(?=does not exist))'
     }
 }
