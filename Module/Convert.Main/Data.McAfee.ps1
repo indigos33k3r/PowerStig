@@ -10,26 +10,26 @@
     Functions.SingleLine.ps1 script in the RegistryRule module.  Example: See Data.Office.ps1
 #>
 $global:SingleLineRegistryPath += [ordered]@{
-    McAfee1 = [ordered]@{
+    McAfeeOne = [ordered]@{
         Match    = '(HKCU|HKLM|HKEY_LOCAL_MACHINE|HKEY_CURRENT_USER)\\'
         Select   = '((HKLM|HKCU|HKEY_LOCAL_MACHINE|HKEY_CURRENT_USER).*(?=\s\(64-bit\)$)).*(\n.*$)'
     }
 }
 
 $global:SingleLineRegistryValueName += [ordered]@{
-    One = @{
+    McAfeeOne = @{
         Select = '(?<=If the value(\s*)?((for( )?)?)").*(")?((?=is.*R)|(?=does not exist))'
     }
 }
 
 $global:SingleLineRegistryValueType += [ordered]@{
-    One   = @{
+    McAfeeOne   = @{
         Select = '((HKLM|HKCU|HKEY_LOCAL_MACHINE|HKEY_CURRENT_USER).*(?=\s\(64-bit\)$)).*(\n.*$)'
     }
 }
 
 $global:SingleLineRegistryValueData += [ordered]@{
-    One   = @{
+    McAfeeOne   = @{
         Select = '(?<={0})(\s*)?=.*(?=(,|\())'
     }
 }
