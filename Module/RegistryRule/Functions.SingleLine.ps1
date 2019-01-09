@@ -151,17 +151,19 @@ function Get-SLRegistryPath
     {
         Write-Verbose "[$($MyInvocation.MyCommand.Name)] Found path : $true"
 
-        switch -Wildcard ($matchedRegistryPath)
+        switch -Regex ($matchedRegistryPath)
         {
-            "*HKLM*" {$matchedRegistryPath = $matchedRegistryPath -replace "^HKLM", "HKEY_LOCAL_MACHINE"}
+            'HKLM' {$matchedRegistryPath = $matchedRegistryPath -replace "^HKLM", "HKEY_LOCAL_MACHINE"}
 
-            "*HKCU*" {$matchedRegistryPath = $matchedRegistryPath -replace "^HKCU", "HKEY_CURRENT_USER"}
+            'HKCU' {$matchedRegistryPath = $matchedRegistryPath -replace "^HKCU", "HKEY_CURRENT_USER"}
 
-            "*Software Publishing Criteria" {$matchedRegistryPath = $matchedRegistryPath -replace 'Software Publishing Criteria$','Software Publishing'}
+            '.*Software Publishing Criteria' {$matchedRegistryPath = $matchedRegistryPath -replace 'Software Publishing Criteria$','Software Publishing'}
 
-            ".*\(64-bit\) \\.*" {$matchedRegistryPath = $matchedRegistryPath -replace ' \(64-bit\) \\', ''}
+            '.*\(64-bit\) \\.*' {$matchedRegistryPath = $matchedRegistryPath -replace ' \(64-bit\) \\', ''}
 
             '.*\(64-bit\)\s\w+' {$matchedRegistryPath = $matchedRegistryPath -replace ' \(64-bit\) ', ''}
+
+            '.*\(64-bit\)\w+' {$matchedRegistryPath = $matchedRegistryPath -replace ' \(64-bit\)', ''}
         }
         
         $result = $matchedRegistryPath.ToString().trim(' ', '.')
