@@ -22,9 +22,9 @@ function Compare-PowerStigXml
 
     # Get path to the temporary STIG conversion to remove later.
     $unmatchedPath = ConvertTo-PowerStigXml -Path $StigXccdfPath -IncludeRawString -Destination $env:TEMP
-    $removePath = (Select-String -InputObject $unmatchedPath -Pattern "(?<=Converted Output: ).*").Matches.Value
+    $differenceStigPath = (Select-String -InputObject $unmatchedPath -Pattern "(?<=Converted Output: ).*").Matches.Value
 
-    [xml] $newStigContent = Get-Content -Path "$env:TEMP\*.xml"
+    [xml] $newStigContent = Get-Content -Path differenceStigPath
     [xml] $oldStigContent = Get-Content -Path $StigXmlPath
 
     $ruleTypes = Get-RuleType -DisaStigContent $oldStigContent.DISASTIG
@@ -77,7 +77,7 @@ function Compare-PowerStigXml
     }
 
     # Remove temporary STIG conversion.
-    Remove-Item -Path $removePath -Force
+    Remove-Item -Path $differenceStigPath -Force
 
     return $ruleResults
 }
@@ -296,8 +296,6 @@ function Compare-AccessControl
         OldAccessControlList = @()
         NewAccessControlEntry = @()
     }
-
-    $referenceListproperties = Get-RuleProperty -Rule $referenceList[0]
 
     foreach ($referenceEntry in $ReferenceList)
     {
