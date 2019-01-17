@@ -1,0 +1,1543 @@
+<DISASTIG id="Microsoft_Outlook_2010" version="1.12" created="1/17/2019">
+  <RegistryRule dscresourcemodule="PSDscResources">
+    <Rule id="V-17173" severity="medium" conversionstatus="pass" title="DTOO104 - Disable user name and password" dscresource="xRegistry">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_LOCAL_MACHINE\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_HTTP_USERNAME_PASSWORD_DISABLE</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>Set the policy value for Computer Configuration &gt;&gt; Administrative Templates &gt;&gt; Microsoft Office 2010 (Machine) &gt;&gt; Security Settings &gt;&gt; IE Security “Disable user name and password” must be “Enabled” and a check in the ”outlook.exe” check box must be present.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKLM\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_HTTP_USERNAME_PASSWORD_DISABLE
+
+Criteria: If the value outlook.exe is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>outlook.exe</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17174" severity="medium" conversionstatus="pass" title="DTOO111 - Enable IE Bind to Object " dscresource="xRegistry">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_LOCAL_MACHINE\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_SAFE_BINDTOOBJECT</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for Computer Configuration -&gt; Administrative Templates -&gt; Microsoft Office 2010 (Machine) -&gt; Security Settings -&gt; IE Security “Bind to Object” must be “Enabled” and a check in the ‘outlook.exe’ check box must be present.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKLM\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_SAFE_BINDTOOBJECT
+
+Criteria: If the value outlook.exe is REG_DWORD = 1, this is not a finding.
+
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>outlook.exe</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17175" severity="medium" conversionstatus="pass" title="DTOO117 - Saved from URL" dscresource="xRegistry">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_LOCAL_MACHINE\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_UNC_SAVEDFILECHECK</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for Computer Configuration -&gt; Administrative Templates -&gt; Microsoft Office 2010 (Machine) -&gt; Security Settings -&gt; IE Security “Saved from URL” must be “Enabled” and a check in the ‘outlook.exe’ check box must be present.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKLM\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_UNC_SAVEDFILECHECK
+
+Criteria: If the value outlook.exe is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>outlook.exe</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17183" severity="medium" conversionstatus="pass" title="DTOO123-Block Navigation to URL from Office " dscresource="xRegistry">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_LOCAL_MACHINE\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_VALIDATE_NAVIGATE_URL</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for Computer Configuration -&gt; Administrative Templates -&gt; Microsoft Office 2010 (Machine) -&gt; Security Settings -&gt; IE Security “Navigate URL” must be “Enabled” and a check in the ‘outlook.exe’ check box must be present.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKLM\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_VALIDATE_NAVIGATE_URL
+
+Criteria: If the value outlook.exe is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>outlook.exe</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17184" severity="medium" conversionstatus="pass" title="DTOO129 - Block Pop-Ups" dscresource="xRegistry">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_LOCAL_MACHINE\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_WEBOC_POPUPMANAGEMENT</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for Computer Configuration -&gt; Administrative Templates -&gt; Microsoft Office 2010 (Machine) -&gt; Security Settings -&gt; IE Security “Block popups” must be “Enabled” and ‘outlook.exe’ is checked.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKLM\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_WEBOC_POPUPMANAGEMENT
+
+Criteria: If the value outlook.exe is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>outlook.exe</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17470" severity="medium" conversionstatus="pass" title="DTOO272 - Content download from safe zones" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\mail</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Automatic Picture Download Settings “Do not permit download of content from safe zones” must be set to “Disabled”.
+
+This will allow the download of content from safe zone.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\mail
+
+Criteria: If the value UnblockSafeZone is REG_DWORD = 1, this is not a finding.</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>UnblockSafeZone</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17546" severity="medium" conversionstatus="pass" title="DTOO219 - Access to Published Calendars " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\pubcal</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Outlook Options -&gt; Preferences -&gt; Calendar Options -&gt; Office.com Sharing Service “Access to published calendars” must be set to “Enabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\pubcal
+
+Criteria: If the value RestrictedAccessOnly is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>RestrictedAccessOnly</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17558" severity="medium" conversionstatus="pass" title="DTOO224 - Email Recipient to Safe Sender List" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\mail</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Outlook Options -&gt; Preferences -&gt; Junk E-mail “Add e-mail recipients to users' Safe Senders Lists” must be set to “Disabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\mail
+
+Criteria: If the value JunkMailTrustOutgoingRecipients is REG_DWORD = 0, this is not a finding.</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>JunkMailTrustOutgoingRecipients</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17559" severity="medium" conversionstatus="pass" title="DTOO234 - Active X One-Off Forms" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security “Allow Active X One Off Forms” must be set to “Enabled: Load only Outlook Controls”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value AllowActiveXOneOffForms is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>AllowActiveXOneOffForms</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17562" severity="medium" conversionstatus="pass" title="DTOO246 - Scripts in One-Off Forms" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Security Form Settings -&gt; Custom Form Security “Allow scripts in one-off Outlook forms” must be set to “Disabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value EnableOneOffFormScripts is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>EnableOneOffFormScripts</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17564" severity="medium" conversionstatus="pass" title="DTOO273 - Block Trusted Zones" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\mail</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Automatic Picture Download Settings “Block Trusted Zones” must be set to “Enabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\mail
+
+Criteria: If the value TrustedZone is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>TrustedZone</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17566" severity="medium" conversionstatus="pass" title="DTOO236 - Add-In Trust Level" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security “Configure Add-In Trust Level” must be set to “Enabled (Trust all loaded and installed COM addins)”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value AddinTrust is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>AddinTrust</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17568" severity="medium" conversionstatus="pass" title="DTOO250 - Object Model Prompt for Address Book " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Security Form Settings -&gt; Programmatic Security “Configure Outlook object model prompt when accessing an address book” must be set to “Enabled (Automatically Deny)”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value PromptOOMAddressBookAccess is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>PromptOOMAddressBookAccess</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17569" severity="medium" conversionstatus="pass" title="DTOO241 - Demote Attachments to Level 2" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Security Form Settings -&gt; Attachment Security “Allow users to demote attachments to Level 2” must be set to “Disabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value AllowUsersToLowerAttachments is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>AllowUsersToLowerAttachments</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17570" severity="medium" conversionstatus="pass" title="DTOO254 - Object Model Prompt for Formula Property" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Security Form Settings -&gt; Programmatic Security “Configure Outlook object model prompt When accessing the Formula property of a UserProperty object” must be set to “Enabled (Automatically Deny)”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value PromptOOMFormulaAccess is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>PromptOOMFormulaAccess</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17571" severity="medium" conversionstatus="pass" title="DTOO253 - Object Model Prompt for Save As" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Security Form Settings -&gt; Programmatic Security “Configure Outlook object model prompt when executing Save As” must be set to “Enabled (Automatically Deny)”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value PromptOOMSaveAs is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>PromptOOMSaveAs</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17572" severity="medium" conversionstatus="pass" title="DTOO251 - Object Model Prompt for Reading Address" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Security Form Settings -&gt; Programmatic Security “Configure Outlook object model prompt when reading address information” must be set to “Enabled (Automatically Deny)”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value PromptOOMAddressInformationAccess is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>PromptOOMAddressInformationAccess</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17573" severity="medium" conversionstatus="pass" title="DTOO252-Object Model Prompt for Meeting Response" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Security Form Settings -&gt; Programmatic Security “Configure Outlook object model prompt when responding to meeting and task requests” must be set to “Enabled (Automatically Deny)”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value PromptOOMMeetingTaskRequestResponse is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>PromptOOMMeetingTaskRequestResponse</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17574" severity="medium" conversionstatus="pass" title="DTOO249 - Object Model Prmpt for auto email send" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Security Form Settings -&gt; Programmatic Security “Configure Outlook object model prompt when sending mail” must be set to “Enabled (Automatically Deny)”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value PromptOOMSend is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>PromptOOMSend</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17574" severity="medium" conversionstatus="pass" title="DTOO249 - Object Model Prmpt for auto email send" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Security Form Settings -&gt; Programmatic Security “Configure Outlook object model prompt when sending mail” must be set to “Enabled (Automatically Deny)”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value PromptOOMSend is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>PromptOOMSend</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17585" severity="medium" conversionstatus="pass" title="DTOO226 - Dial-up Options " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\mail</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Outlook Options -&gt; Mail Setup “Dial–up options” must be set to “Enabled” and Hang up when finished sending, receiving, or updating is selected.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\mail
+
+Criteria: If the value Hangup after Spool is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>Hangup after Spool</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17586" severity="medium" conversionstatus="pass" title="DTOO225 - Warn before Switching Dial-up" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\mail</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Outlook Options -&gt; Mail Setup “Dial–up options” must be set to “Enabled” and Warn before switching dial-up connection is selected.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\mail
+
+Criteria: If the value Warn on Dialup is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>Warn on Dialup</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17587" severity="medium" conversionstatus="pass" title="DTOO237-Disable &quot;remember password&quot; on eMail Accts" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security “Disable ‘Remember password’ for Internet e-mail accounts” must be set to “Enabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value EnableRememberPwd is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>EnableRememberPwd</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17601" severity="medium" conversionstatus="pass" title="DTOO243 - Level 1 Attachment prompt" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Security Form Settings -&gt; Attachment Security “Do not prompt about Level 1 attachments when closing an item” must be set to “Disabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value DontPromptLevel1AttachClose is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>DontPromptLevel1AttachClose</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17602" severity="medium" conversionstatus="pass" title="DTOO242 - Level 1 Attachment Prompt on sending. " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Security Form Settings -&gt; Attachment Security “Do not prompt about Level 1 attachments when sending an item” must be set to “Disabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value DontPromptLevel1AttachSend is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>DontPromptLevel1AttachSend</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17610" severity="medium" conversionstatus="pass" title="DTOO283 - Dwnld articles as HTML attachments" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\rss</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Account Settings -&gt; RSS Feeds “Download full text of articles as HTML attachments” must be set to “Disabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\rss
+
+Criteria: If the value EnableFullTextHTML is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>EnableFullTextHTML</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17613" severity="medium" conversionstatus="pass" title="DTOO277 - Links in Email Messages" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\mail</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Trust Center “Allow hyperlinks in suspected phishing e-mail messages” must be set to “Disabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\mail
+
+Criteria: If the value JunkMailEnableLinks is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>JunkMailEnableLinks</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17615" severity="medium" conversionstatus="pass" title="DTOO279 - Enable RPC Encryption " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\rpc</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Account Settings -&gt; Exchange “Enable RPC encryption” must be set to “Enabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\rpc
+
+Criteria: If the value EnableRPCEncryption is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>EnableRPCEncryption</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17624" severity="medium" conversionstatus="pass" title="DTOO221 - Junk Mail UI " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Outlook Options -&gt; Preferences -&gt; Junk E-mail “Hide Junk Mail UI” must be set to “Disabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook
+
+Criteria: If the value DisableAntiSpam is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>DisableAntiSpam</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17630" severity="medium" conversionstatus="pass" title="DTOO274 - Internet with Safe Zones " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\mail</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Automatic Picture Download Settings “Include Internet in Safe Zones for Automatic Picture Download” must be set to “Disabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\mail
+
+Criteria: If the value Internet is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>Internet</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17634" severity="medium" conversionstatus="pass" title="DTOO275 - Incl. Intranet with Safe Zone " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\mail</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Automatic Picture Download Settings “Include Intranet in Safe Zones for Automatic Picture Download” must be set to “Disabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\mail
+
+Criteria: If the value Intranet is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>Intranet</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17671" severity="medium" conversionstatus="pass" title="DTOO240 - Level 1 Attachments" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Security Form Settings -&gt; Attachment Security “Display Level 1 attachments” must be set to “Disabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value ShowLevel1Attach is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>ShowLevel1Attach</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17672" severity="medium" conversionstatus="pass" title="DTOO270 - External Pictures &amp; content " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\Outlook\Options\Mail</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>Verify the policy value for User Configuration &gt;&gt; Administrative Templates &gt;&gt; Microsoft Office Outlook 2010 &gt;&gt; Security &gt;&gt; Automatic Picture Download Settings “Display pictures and external content in HTML e-mail” is set to “Enable”.
+
+NOTE: When this setting is Enabled, Outlook 2010 blocks automatic download of content from external servers unless the sender is included in the Safe Senders list. Recipients can choose to download external content from untrusted senders on a message-by-message basis.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\Outlook\Options\Mail
+
+Criteria: If the value BlockExtContent is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>BlockExtContent</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17673" severity="medium" conversionstatus="pass" title="DTOO227 - Digital Signature handling" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\common\mailsettings</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010-&gt; Outlook Options -&gt; Mail format “Do not allow signatures for e-mail messages” must be set to “Disabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\common\mailsettings
+
+Criteria: If the value DisableSignatures is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>DisableSignatures</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17674" severity="medium" conversionstatus="pass" title="DTOO230 - No fldr home pages / non-default stores " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Outlook Options -&gt; Other -&gt; Advanced “Do not allow folders in non-default stores to be set as folder home pages” must be set to “Enabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value NonDefaultStoreScript is REG_DWORD = 0, this is not a finding.
+
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>NonDefaultStoreScript</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17675" severity="medium" conversionstatus="pass" title="DTOO233 - OOM scripts for Public Folders" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Outlook Options -&gt; Other -&gt; Advanced “Do not allow Outlook object model scripts to run for public folders” must be set to “Enabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value PublicFolderScript is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>PublicFolderScript</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17676" severity="medium" conversionstatus="pass" title="DTOO232 - OOM scripts for Shared Folders " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Outlook Options -&gt; Other -&gt; Advanced “Do not allow Outlook object model scripts to run for shared folders” must be set to “Enabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value SharedFolderScript is REG_DWORD = 0, this is not a finding.
+
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>SharedFolderScript</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17678" severity="medium" conversionstatus="pass" title="DTOO285 - Internet Calendar Integration " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\webcal</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Account Settings -&gt; Internet Calendars “Do not include Internet Calendar integration in Outlook” must be set to “Enabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\webcal
+
+Criteria: If the value Disable is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>Disable</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17678" severity="medium" conversionstatus="pass" title="DTOO285 - Internet Calendar Integration " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\webcal</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Account Settings -&gt; Internet Calendars “Do not include Internet Calendar integration in Outlook” must be set to “Enabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\webcal
+
+Criteria: If the value Disable is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>Disable</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17734" severity="medium" conversionstatus="pass" title="DTOO280 - Authentication w/Exchange Svr " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Account Settings -&gt; Exchange “Authentication with Exchange Server” must be set to “Enabled (Kerberos/NTLM Password Authentication)”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value AuthenticationService is REG_DWORD = 9, this is not a finding.
+
+</RawString>
+      <ValueData>9</ValueData>
+      <ValueName>AuthenticationService</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17736" severity="medium" conversionstatus="pass" title="DTOO278 - Auto configure profile based on AD" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\autodiscover</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>NOTE: If Outlook 2010 is configured to access DoD Enterprise Email, this check is not applicable.
+
+The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Account Settings -&gt; Exchange “Automatically configure profile based on Active Directory Primary SMTP address” must be set to “Enabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\autodiscover
+
+Criteria: If the value ZeroConfigExchange is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>ZeroConfigExchange</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17738" severity="medium" conversionstatus="pass" title="DTOO284 - Auto download attachments Internet Cal" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\webcal</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Account Settings -&gt; Internet Calendars “Automatically download attachments” must be set to “Disabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\webcal
+
+Criteria: If the value EnableAttachments is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>EnableAttachments</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17739" severity="medium" conversionstatus="pass" title="DTOO271 - Auto Download from Safe lists " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\mail</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Automatic Picture Download Settings “Automatically download content for e-mail from people in Safe Senders and Safe Recipients Lists” must be set to “Disabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\mail
+
+Criteria: If the value UnblockSpecificSenders is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>UnblockSpecificSenders</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17753" severity="medium" conversionstatus="pass" title="DTOO229 - Make Outlook the default program" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\general</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Outlook Options -&gt; Other “Make Outlook the default program for E-mail, Contacts, and Calendar” must be set to “Enabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\general
+
+Criteria: If the value Check Default Client is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>Check Default Client</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17755" severity="medium" conversionstatus="pass" title="DTOO260 - SMime message formats" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Cryptography “Message Formats” must be set to “Enabled (S\MIME)”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value MsgFormats is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>MsgFormats</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17756" severity="medium" conversionstatus="pass" title="DTOO268 - Missing Root Certificates " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Cryptography -&gt; Signature Status dialog box “Missing root certificates” must be set to “Enabled (Error)”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value SigStatusNoTrustDecision is REG_DWORD = 2, this is not a finding.
+</RawString>
+      <ValueData>2</ValueData>
+      <ValueName>SigStatusNoTrustDecision</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17760" severity="medium" conversionstatus="pass" title="DTOO239 - Outlook Security Mode " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Security Form Settings “Outlook Security Mode” must be “Enabled (Use Outlook Security Group Policy)”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value AdminSecurityMode is REG_DWORD = 3, this is not a finding.
+</RawString>
+      <ValueData>3</ValueData>
+      <ValueName>AdminSecurityMode</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17760" severity="medium" conversionstatus="pass" title="DTOO239 - Outlook Security Mode " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Security Form Settings “Outlook Security Mode” must be “Enabled (Use Outlook Security Group Policy)”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value AdminSecurityMode is REG_DWORD = 3, this is not a finding.
+</RawString>
+      <ValueData>3</ValueData>
+      <ValueName>AdminSecurityMode</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17762" severity="medium" conversionstatus="pass" title="DTOO217 - Prevent publishing to DAV Servers" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\pubcal</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Outlook Options -&gt; Preferences -&gt; Calendar Options -&gt; Office.com Sharing Service “Prevent publishing to a DAV server” must be set to “Enabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\pubcal
+
+Criteria: If the value DisableDav is REG_DWORD = 1, this is not a finding.
+
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>DisableDav</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17763" severity="medium" conversionstatus="pass" title="DTOO216 - Publishing to Office Online " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\pubcal</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Outlook Options -&gt; Preferences -&gt; Calendar Options -&gt; Office.com Sharing Service “Prevent publishing to Office.com” must be set to “Enabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\pubcal
+
+Criteria: If the value DisableOfficeOnline is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>DisableOfficeOnline</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17766" severity="medium" conversionstatus="pass" title="DTOO238 - Prev't users customizing security set" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security “Prevent users from customizing attachment security settings” must be set to “Enabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook
+
+Criteria: If the value DisallowAttachmentCustomization is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>DisallowAttachmentCustomization</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17770" severity="medium" conversionstatus="pass" title="DTOO214 - Read EMail as plain text " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\mail</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Outlook Options -&gt; Preferences -&gt; E-mail Options “Read e-mail as plain text” must be set to “Enabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\mail
+
+Criteria: If the value ReadAsPlain is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>ReadAsPlain</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17771" severity="medium" conversionstatus="pass" title="DTOO215 - Read signed EMail as plain text " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\mail</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Outlook Options -&gt; Preferences -&gt; E-mail Options “Read signed e-mail as plain text” must be set to “Enabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\mail
+
+Criteria: If the value ReadSignedAsPlain is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>ReadSignedAsPlain</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17771" severity="medium" conversionstatus="pass" title="DTOO215 - Read signed EMail as plain text " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\mail</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Outlook Options -&gt; Preferences -&gt; E-mail Options “Read signed e-mail as plain text” must be set to “Enabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\mail
+
+Criteria: If the value ReadSignedAsPlain is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>ReadSignedAsPlain</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17771" severity="medium" conversionstatus="pass" title="DTOO215 - Read signed EMail as plain text " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\mail</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Outlook Options -&gt; Preferences -&gt; E-mail Options “Read signed e-mail as plain text” must be set to “Enabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\mail
+
+Criteria: If the value ReadSignedAsPlain is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>ReadSignedAsPlain</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17776" severity="medium" conversionstatus="pass" title="DTOO218 - Calendar details published by users" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\pubcal</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Outlook Options -&gt; Preferences -&gt; Calendar Options -&gt; Office.com Sharing Service “Restrict level of calendar details users can publish” must be “Enabled (Disables ‘Full details’ and ‘Limited details’)”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\pubcal
+
+Criteria: If the value PublishCalendarDetailsPolicy is REG_DWORD = 4000 (hex) or 16384 (Decimal), this is not a finding.
+</RawString>
+      <ValueData>4000</ValueData>
+      <ValueName>PublishCalendarDetailsPolicy</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17777" severity="medium" conversionstatus="pass" title="DTOO220 - Upload methods" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\pubcal</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Outlook Options -&gt; Preferences -&gt; Calendar Options -&gt; Office.com Sharing Service “Restrict upload method” must be set to “Enabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\pubcal
+
+Criteria: If the value SingleUploadOnly is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>SingleUploadOnly</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17778" severity="medium" conversionstatus="pass" title="DTOO267 - Retrieving CRLs - Outlook" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Cryptography -&gt; Signature Status dialog box “Retrieving CRLs (Certificate Revocation Lists)” must be “Enabled (When online always retrieve the CRL)”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value UseCRLChasing is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>UseCRLChasing</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17787" severity="medium" conversionstatus="pass" title="DTOO262 - FIPS compliant mode" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Cryptography “Run in FIPS compliant mode” must be set to “Enabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value FIPSMode is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>FIPSMode</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17790" severity="medium" conversionstatus="pass" title="DTOO257 - No S/Mime interop w/ external clients" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Cryptography “S/MIME interoperability with external clients” must be set to “Enabled (Handle internally)”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value ExternalSMime is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>ExternalSMime</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17795" severity="medium" conversionstatus="pass" title="DTOO266 - S/Mime receipt requests " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Cryptography “S/MIME receipt requests behavior” must be  “Enabled (Never send S\MIME receipts)”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value RespondToReceiptRequests is REG_DWORD = 2, this is not a finding.
+</RawString>
+      <ValueData>2</ValueData>
+      <ValueName>RespondToReceiptRequests</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17798" severity="medium" conversionstatus="pass" title="DTOO276 - Security settings for macros" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Trust Center “Security setting for macros” must be “Enabled (Always warn)”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value Level is REG_DWORD = 2, this is not a finding.
+</RawString>
+      <ValueData>2</ValueData>
+      <ValueName>Level</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17800" severity="medium" conversionstatus="pass" title="DTOO264 - Clear signed messages" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Cryptography “Send all signed messages as clear signed messages” must be set to “Enabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value ClearSign is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>ClearSign</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17802" severity="medium" conversionstatus="pass" title="DTOO247 - Custom OOM Action Exe. Prompt " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Security Form Settings -&gt; Custom Form Security “Set Outlook object model Custom Actions execution prompt” must be “Enabled (Automatically Deny)”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value PromptOOMCustomAction is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>PromptOOMCustomAction</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17803" severity="medium" conversionstatus="pass" title="DTOO265 - Signature Warnings" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Cryptography “Signature Warning” must be “Enabled (Always warn about invalid signatures)”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value WarnAboutInvalid is REG_DWORD = 1, this is not a finding.
+
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>WarnAboutInvalid</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17806" severity="medium" conversionstatus="pass" title="DTOO281 - Sync RSS Feeds w/Common List" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\rss</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Account Settings -&gt; RSS Feeds “Synchronize Outlook RSS Feeds with Common Feed List” must be set to “Disabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\rss
+
+Criteria: If the value SyncToSysCFL is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>SyncToSysCFL</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17807" severity="medium" conversionstatus="pass" title="DTOO223 - Trust EMail from Contacts" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\mail</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Outlook Options -&gt; Preferences -&gt; Junk E-mail “Trust E-mail from Contacts” must be set to “Enabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\mail
+
+Criteria: If the value JunkMailTrustContacts is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>JunkMailTrustContacts</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17807" severity="medium" conversionstatus="pass" title="DTOO223 - Trust EMail from Contacts" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\mail</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Outlook Options -&gt; Preferences -&gt; Junk E-mail “Trust E-mail from Contacts” must be set to “Enabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\mail
+
+Criteria: If the value JunkMailTrustContacts is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>JunkMailTrustContacts</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17812" severity="medium" conversionstatus="pass" title="DTOO231 - Unicode use when dragging Email " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\general</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Outlook Options -&gt; Other -&gt; Advanced “Use Unicode format when dragging e-mail message to file system”  must be set to “Disabled”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\general
+
+Criteria: If the value MSGFormat is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>MSGFormat</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-17944" severity="medium" conversionstatus="pass" title="DTOO286 - Disable User Entries to Server list" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\meetings\profile</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Meeting Workspace “Disable user entries to server list” must be set to “Enabled (Publish default, disallow others)”.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\meetings\profile
+
+Criteria: If the value ServerUI is REG_DWORD = 2, this is not a finding.
+
+</RawString>
+      <ValueData>2</ValueData>
+      <ValueName>ServerUI</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-26584" severity="medium" conversionstatus="pass" title="DTOO126 - Add-on Management" dscresource="xRegistry">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_LOCAL_MACHINE\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_ADDON_MANAGEMENT</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for Computer Configuration -&gt; Administrative Templates -&gt; Microsoft Office 2010 (Machine) -&gt; Security Settings -&gt; IE Security “Add-on Management” must be set to “Enabled” and ‘outlook.exe’ is checked.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKLM\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_ADDON_MANAGEMENT
+
+Criteria: If the value outlook.exe is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>outlook.exe</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-26585" severity="medium" conversionstatus="pass" title="DTOO209 - Zone Elevation Protection" dscresource="xRegistry">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_LOCAL_MACHINE\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_ZONE_ELEVATION</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for Computer Configuration -&gt; Administrative Templates -&gt; Microsoft Office 2010 (Machine) -&gt; Security Settings -&gt; IE Security “Protection From Zone Elevation” must be set to “Enabled” and 'outlook.exe' is checked.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKLM\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_ZONE_ELEVATION
+
+Criteria: If the value outlook.exe is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>outlook.exe</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-26586" severity="medium" conversionstatus="pass" title="DTOO211 - Restrict ActiveX Install" dscresource="xRegistry">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_LOCAL_MACHINE\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_RESTRICT_ACTIVEXINSTALL</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for Computer Configuration -&gt; Administrative Templates -&gt; Microsoft Office 2010 (Machine) -&gt; Security Settings -&gt; IE Security “Restrict ActiveX Install” must be set to “Enabled” and 'outlook.exe' is checked.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKLM\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_RESTRICT_ACTIVEXINSTALL
+
+Criteria: If the value outlook.exe is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>outlook.exe</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-26587" severity="medium" conversionstatus="pass" title="DTOO132 - Restrict File Download" dscresource="xRegistry">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_LOCAL_MACHINE\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_RESTRICT_FILEDOWNLOAD</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for Computer Configuration -&gt; Administrative Templates -&gt; Microsoft Office 2010 (Machine) -&gt; Security Settings -&gt; IE Security “Restrict File Download” must be set to “Enabled” and 'outlook.exe' is checked.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKLM\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_RESTRICT_FILEDOWNLOAD
+
+Criteria: If the value outlook.exe is REG_DWORD = 1, this is not a finding.
+
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>outlook.exe</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-26588" severity="medium" conversionstatus="pass" title="DTOO124 - Scripted Window Security" dscresource="xRegistry">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_LOCAL_MACHINE\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_WINDOW_RESTRICTIONS</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for Computer Configuration -&gt; Administrative Templates -&gt; Microsoft Office 2010 (Machine) -&gt; Security Settings -&gt; IE Security “Scripted Window Security Restrictions” must be set to “Enabled” and 'outlook.exe' is checked.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKLM\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_WINDOW_RESTRICTIONS
+
+Criteria: If the value outlook.exe is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>outlook.exe</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-26590" severity="medium" conversionstatus="pass" title="DTOO128 - Data Execution Prevention" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Trust Center “Turn off Data Execution Prevention” must be set to “Disabled".
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value EnableDEP is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>EnableDEP</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-26632" severity="medium" conversionstatus="pass" title="DTOO313 - Automatically download enclosures" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\rss</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Account Settings -&gt; RSS Feeds “Automatically download enclosures” must be set to “Disabled".
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\rss
+
+Criteria: If the value EnableAttachments is REG_DWORD = 0, this is not a finding.
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>EnableAttachments</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-26633" severity="medium" conversionstatus="pass" title="DTOO344 - Outlook Rich Text options" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\mail</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Outlook Options -&gt; Mail Format -&gt; Internet Formatting “Outlook Rich Text options” must be “Enabled: Convert to Plain Text format".
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\mail
+
+Criteria: If the value Message RTF Format is REG_DWORD = 1, this is not a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>Message RTF Format</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-26634" severity="medium" conversionstatus="pass" title="DTOO314 - Set message format" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\options\mail</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Outlook Options -&gt; Mail Format -&gt; Internet Formatting -&gt; Message Format “Set message format” must be “Enabled: Plain Text".
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\options\mail
+
+Criteria: If the value EditorPreference is REG_DWORD = 65536 (dec), this is not a finding.
+</RawString>
+      <ValueData>65536</ValueData>
+      <ValueName>EditorPreference</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-26635" severity="medium" conversionstatus="pass" title="DTOO315 - Outlook Security settings " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security “Prompt user to choose security settings if default settings fail” must be set to “Disabled".
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value ForceDefaultProfile is REG_DWORD = 0, this is not a finding.
+
+</RawString>
+      <ValueData>0</ValueData>
+      <ValueName>ForceDefaultProfile</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-26636" severity="medium" conversionstatus="pass" title="DTOO316 - Minimum encryption settings" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Cyrptography “Minimum encryption settings” must be set to “Enabled: 168 bits".
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value MinEncKey is REG_DWORD = 168, this is not a finding.
+
+</RawString>
+      <ValueData>168</ValueData>
+      <ValueName>MinEncKey</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-26637" severity="medium" conversionstatus="pass" title="DTOO317 - Signed/encrypted messages " dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Cyrptography “Replies or forwards to signed/encrypted messages are signed/encrypted” must be set to “Enabled".
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value NoCheckOnSessionSecurity is REG_DWORD = 1, this is not a finding.
+
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>NoCheckOnSessionSecurity</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-26702" severity="medium" conversionstatus="pass" title="DTOO320 - Check e-mail address against certificate" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\14.0\outlook\security</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The policy value for User Configuration -&gt; Administrative Templates -&gt; Microsoft Outlook 2010 -&gt; Security -&gt; Cryptography “Do not check e-mail address against address of certificates being used” must be set to “Enabled".
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\Software\Policies\Microsoft\Office\14.0\outlook\security
+
+Criteria: If the value SupressNameChecks is REG_DWORD = 1, this is not a finding.
+
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>SupressNameChecks</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+    <Rule id="V-41493" severity="medium" conversionstatus="pass" title="DTOO425 - Disable Internet and network path into hyperlinks" dscresource="cAdministrativeTemplate">
+      <Ensure>Present</Ensure>
+      <IsNullOrEmpty>False</IsNullOrEmpty>
+      <Key>HKEY_CURRENT_USER\software\policies\Microsoft\office\14.0\outlook\options\autoformat</Key>
+      <OrganizationValueRequired>False</OrganizationValueRequired>
+      <OrganizationValueTestString />
+      <RawString>The intent of this check is to block the display of Internet and network paths as hyperlinks in email messages. This requirement cannot be configured in the Office 2010 Administrative Templates. It can either be configured individually, within each Outlook client, or by registry key.
+
+To verify within the Outlook client that "Internet and network path into hyperlinks" is not enabled:
+
+From the main Outlook window, go to Tools&gt;&gt;Options.
+Select the "Mail Format" tab.
+Select the "Editor Options" button.
+In the left pane, select the "Proofing" button.
+Select the "AutoCorrect" button.
+Select the "AutoFormat As You Type" tab.
+
+Criteria: If the "Internet and network path into hyperlinks" checkbox is selected, this is a finding.
+
+Procedure: Use the Windows Registry Editor to navigate to the following key:
+
+HKCU\software\policies\Microsoft\office\14.0\outlook\options\autoformat
+
+Criteria: If the value pgrfafo_25_1 is REG_DWORD = 1, this is a finding.
+</RawString>
+      <ValueData>1</ValueData>
+      <ValueName>pgrfafo_25_1</ValueName>
+      <ValueType>Dword</ValueType>
+    </Rule>
+  </RegistryRule>
+</DISASTIG>

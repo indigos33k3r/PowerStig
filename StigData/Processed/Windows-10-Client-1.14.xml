@@ -1,4 +1,4 @@
-<DISASTIG id="Windows_10_STIG" version="1.14" created="11/29/2018">
+<DISASTIG id="Windows_10_STIG" version="1.14" created="1/17/2019">
   <AccountPolicyRule dscresourcemodule="SecurityPolicyDsc">
     <Rule id="V-63405" severity="medium" conversionstatus="pass" title="WN10-AC-000005" dscresource="AccountPolicy">
       <IsNullOrEmpty>False</IsNullOrEmpty>
@@ -3017,7 +3017,7 @@ EnableRopSimExec: ON
 The PowerShell command produces a list of mitigations; only those with a required status of "ON" are listed here.</RawString>
     </Rule>
   </ProcessMitigationRule>
-  <RegistryRule dscresourcemodule="xPSDesiredStateConfiguration">
+  <RegistryRule dscresourcemodule="PSDscResources">
     <Rule id="V-63321" severity="medium" conversionstatus="pass" title="WN10-CC-000310" dscresource="xRegistry">
       <Ensure>Present</Ensure>
       <IsNullOrEmpty>False</IsNullOrEmpty>
@@ -5771,7 +5771,7 @@ Navigate to Local Computer Policy &gt;&gt; Computer Configuration &gt;&gt; Windo
 If the value for "Network access: Allow anonymous SID/Name translation" is not set to "Disabled", this is a finding.</RawString>
     </Rule>
   </SecurityOptionRule>
-  <ServiceRule dscresourcemodule="xPSDesiredStateConfiguration">
+  <ServiceRule dscresourcemodule="PSDscResources">
     <Rule id="V-74719" severity="medium" conversionstatus="pass" title="WN10-00-000175" dscresource="xService">
       <Ensure>Present</Ensure>
       <IsNullOrEmpty>False</IsNullOrEmpty>

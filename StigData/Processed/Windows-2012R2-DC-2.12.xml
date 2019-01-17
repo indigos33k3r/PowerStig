@@ -1,4 +1,4 @@
-<DISASTIG id="Windows_2012_DC_STIG" version="2.12" created="12/13/2018">
+<DISASTIG id="Windows_2012_DC_STIG" version="2.12" created="1/17/2019">
   <AccountPolicyRule dscresourcemodule="SecurityPolicyDsc">
     <Rule id="V-1097" severity="medium" conversionstatus="pass" title="Bad Logon Attempts" dscresource="AccountPolicy">
       <IsNullOrEmpty>False</IsNullOrEmpty>
@@ -2197,7 +2197,7 @@ Do not use File Explorer to attempt to view permissions of the NTDS folder. Acce
       <IsNullOrEmpty>False</IsNullOrEmpty>
       <OrganizationValueRequired>False</OrganizationValueRequired>
       <OrganizationValueTestString />
-      <Path>HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\</Path>
+      <Path>HKLM:\SOFTWARE\Wow6432Node\Microsoft\Active Setup\Winlogon\</Path>
       <RawString>Run "Regedit".
 Navigate to the following registry key:
 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\
@@ -3165,7 +3165,7 @@ Viewing in File Explorer:
 For each folder, view the Properties.
 Select the "Security" tab, and the "Advanced" button.
 Default Permissions:
-\Program Files
+\Program Files 
 Type - "Allow" for all
 Inherited from - "None" for all
 Principal - Access - Applies to
@@ -3475,7 +3475,7 @@ TrustedInstaller - Full Control
 Administrators, SYSTEM, Users, ALL APPLICATION PACKAGES - Read &amp; Execute</RawString>
     </Rule>
   </PermissionRule>
-  <RegistryRule dscresourcemodule="xPSDesiredStateConfiguration">
+  <RegistryRule dscresourcemodule="PSDscResources">
     <Rule id="V-1075" severity="low" conversionstatus="pass" title="Display Shutdown Button" dscresource="xRegistry">
       <Ensure>Present</Ensure>
       <IsNullOrEmpty>False</IsNullOrEmpty>
@@ -6221,7 +6221,8 @@ Select "Bin".
 The returned value may vary in length, up to 32 characters.
 If the either of 2 right most characters are "1", this is a finding.
 If the both of 2 right most characters are "0", this is not a finding.</RawString>
-      <ValueData>0</ValueData>
+      <ValueData>
+      </ValueData>
       <ValueName>SupportedEncryptionTypes</ValueName>
       <ValueType>Dword</ValueType>
     </Rule>
@@ -7541,7 +7542,7 @@ Navigate to Local Computer Policy -&gt; Computer Configuration -&gt; Windows Set
 If the value for "Network security: Force logoff when logon hours expire" is not set to "Enabled", this is a finding.</RawString>
     </Rule>
   </SecurityOptionRule>
-  <ServiceRule dscresourcemodule="xPSDesiredStateConfiguration">
+  <ServiceRule dscresourcemodule="PSDscResources">
     <Rule id="V-8327.a" severity="medium" conversionstatus="pass" title="Prerequisite OS Services Startup" dscresource="xService">
       <Ensure>Present</Ensure>
       <IsNullOrEmpty>False</IsNullOrEmpty>

@@ -1,5 +1,5 @@
-<DISASTIG id="Microsoft_Outlook_2013" version="1.13" created="12/14/2018">
-  <RegistryRule dscresourcemodule="xPSDesiredStateConfiguration">
+<DISASTIG id="Microsoft_Outlook_2013" version="1.13" created="1/17/2019">
+  <RegistryRule dscresourcemodule="PSDscResources">
     <Rule id="V-17173" severity="medium" conversionstatus="pass" title="DTOO104 - Disable user name and password" dscresource="xRegistry">
       <Ensure>Present</Ensure>
       <IsNullOrEmpty>False</IsNullOrEmpty>

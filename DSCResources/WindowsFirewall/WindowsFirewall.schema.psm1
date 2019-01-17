@@ -86,10 +86,8 @@ Configuration WindowsFirewall
     # $resourcePath is exported from the helper module in the header
 
     # This is required to process Skipped rules
-    Import-DscResource -ModuleName PSDesiredStateConfiguration -ModuleVersion 1.1
+    Import-DscResource -ModuleName PSDscResources -ModuleVersion 2.9.0.0
     . "$resourcePath\windows.Script.skip.ps1"
-    ##### END DO NOT MODIFY #####
-
-    Import-DscResource -ModuleName xPSDesiredStateConfiguration -ModuleVersion 8.3.0.0
     . "$resourcePath\windows.xRegistry.ps1"
+    ##### END DO NOT MODIFY #####
 }

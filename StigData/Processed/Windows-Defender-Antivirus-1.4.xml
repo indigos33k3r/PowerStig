@@ -1,5 +1,5 @@
-<DISASTIG id="Windows_Defender_Antivirus" version="1.4" created="1/8/2019">
-  <RegistryRule dscresourcemodule="xPSDesiredStateConfiguration">
+<DISASTIG id="Windows_Defender_Antivirus" version="1.4" created="1/17/2019">
+  <RegistryRule dscresourcemodule="PSDscResources">
     <Rule id="V-75147" severity="high" conversionstatus="pass" title="SRG-APP-000279" dscresource="xRegistry">
       <Ensure>Present</Ensure>
       <IsNullOrEmpty>False</IsNullOrEmpty>

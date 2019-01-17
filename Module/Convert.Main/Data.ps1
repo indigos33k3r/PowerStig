@@ -43,9 +43,9 @@ data dscResourceModule
         ManualRule                      = None
         PermissionRule                  = AccessControlDsc
         ProcessMitigationRule           = WindowsDefenderDsc
-        RegistryRule                    = xPSDesiredStateConfiguration
+        RegistryRule                    = PSDscResources
         SecurityOptionRule              = SecurityPolicyDsc
-        ServiceRule                     = xPSDesiredStateConfiguration
+        ServiceRule                     = PSDscResources
         SqlScriptQueryRule              = SqlServerDsc
         UserRightRule                   = SecurityPolicyDsc
         WebAppPoolRule                  = xWebAdministration

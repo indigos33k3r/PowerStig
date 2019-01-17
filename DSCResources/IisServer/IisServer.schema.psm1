@@ -116,18 +116,14 @@ Configuration IisServer
 
     # $resourcePath is exported from the helper module in the header
     # This is required to process Skipped rules
-    Import-DscResource -ModuleName PSDesiredStateConfiguration -ModuleVersion 1.1
+    Import-DscResource -ModuleName PSDscResources -ModuleVersion 2.9.0.0
     . "$resourcePath\windows.Script.skip.ps1"
+    . "$resourcePath\windows.WindowsFeature.ps1"
+    . "$resourcePath\windows.xRegistry.ps1"
     ##### END DO NOT MODIFY #####
 
     Import-DscResource -ModuleName AccessControlDsc -ModuleVersion 1.1.0.0
     . "$resourcePath\windows.AccessControl.ps1"
-
-    Import-DscResource -ModuleName PSDesiredStateConfiguration -ModuleVersion 1.1
-    . "$resourcePath\windows.WindowsFeature.ps1"
-
-    Import-DscResource -ModuleName xPSDesiredStateConfiguration -ModuleVersion 8.3.0.0
-    . "$resourcePath\windows.xRegistry.ps1"
 
     Import-DscResource -ModuleName xWebAdministration -ModuleVersion 2.3.0.0
     . "$resourcePath\windows.xIisMimeTypeMapping.ps1"

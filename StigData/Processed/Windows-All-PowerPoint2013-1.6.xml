@@ -1,5 +1,5 @@
-<DISASTIG id="Microsoft_PowerPoint_2013" version="1.6" created="9/23/2018">
-  <RegistryRule dscresourcemodule="xPSDesiredStateConfiguration">
+<DISASTIG id="Microsoft_PowerPoint_2013" version="1.6" created="1/17/2019">
+  <RegistryRule dscresourcemodule="PSDscResources">
     <Rule id="V-17173" severity="medium" conversionstatus="pass" title="DTOO104 - Disable user name and password" dscresource="xRegistry">
       <Ensure>Present</Ensure>
       <IsNullOrEmpty>False</IsNullOrEmpty>
@@ -446,7 +446,7 @@ Criteria: If the value DisableUnsafeLocationsInPV is REG_DWORD = 0, this is not 
     <Rule id="V-26616.a" severity="medium" conversionstatus="pass" title="DTOO292 - Set document behavior " dscresource="cAdministrativeTemplate">
       <Ensure>Present</Ensure>
       <IsNullOrEmpty>False</IsNullOrEmpty>
-      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\15.0\PowerPoint\security\filevalidation</Key>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\15.0\PowerPoint\security\filevalidation\OpenInProtectedView is set to REG_DWORD = 1</Key>
       <OrganizationValueRequired>False</OrganizationValueRequired>
       <OrganizationValueTestString />
       <RawString>HKCU\Software\Policies\Microsoft\Office\15.0\PowerPoint\security\filevalidation\OpenInProtectedView is set to REG_DWORD = 1</RawString>
@@ -457,7 +457,7 @@ Criteria: If the value DisableUnsafeLocationsInPV is REG_DWORD = 0, this is not 
     <Rule id="V-26616.b" severity="medium" conversionstatus="pass" title="DTOO292 - Set document behavior " dscresource="cAdministrativeTemplate">
       <Ensure>Present</Ensure>
       <IsNullOrEmpty>False</IsNullOrEmpty>
-      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\15.0\PowerPoint\security\filevalidation</Key>
+      <Key>HKEY_CURRENT_USER\Software\Policies\Microsoft\Office\15.0\PowerPoint\security\filevalidation\DisableEditFromPV is set to REG_DWORD = 1, this is not a finding</Key>
       <OrganizationValueRequired>False</OrganizationValueRequired>
       <OrganizationValueTestString />
       <RawString>HKCU\Software\Policies\Microsoft\Office\15.0\PowerPoint\security\filevalidation\DisableEditFromPV is set to REG_DWORD = 1, this is not a finding.</RawString>
