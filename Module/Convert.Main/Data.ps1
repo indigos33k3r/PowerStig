@@ -67,3 +67,12 @@ data propertiesToRemove
     'dscresourcemodule'
     'RawString'
 }
+
+data stigTitleVariations
+{
+    @{
+        Office          = @('Excel2013', 'Outlook2013', 'PowerPoint2013', 'Word2013', 'Excel2016', 'Outlook2016', 'PowerPoint2016', 'Word2016')
+        Browser         = @('Chrome', 'Firefox', 'IE11')
+        ActiveDirectory = @('Domain', 'Forest')
+    }
+}
