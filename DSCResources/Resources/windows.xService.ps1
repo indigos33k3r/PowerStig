@@ -5,7 +5,7 @@ $rules = Get-RuleClassData -StigData $stigData -Name ServiceRule
 
 foreach ( $rule in $rules )
 {
-    xService (Get-ResourceTitle -Rule $rule)
+    Service (Get-ResourceTitle -Rule $rule)
     {
         Name        = $rule.ServiceName
         State       = $rule.ServiceState

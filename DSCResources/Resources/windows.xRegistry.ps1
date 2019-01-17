@@ -16,7 +16,7 @@ foreach ( $rule in $rules )
             $valueData = $rule.ValueData
         }
 
-        xRegistry (Get-ResourceTitle -Rule $rule)
+        Registry (Get-ResourceTitle -Rule $rule)
         {
             Key       = $rule.Key
             ValueName = $rule.ValueName

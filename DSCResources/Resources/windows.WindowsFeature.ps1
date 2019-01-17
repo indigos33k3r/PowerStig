@@ -5,7 +5,7 @@ $rules = Get-RuleClassData -StigData $stigData -Name WindowsFeatureRule
 
 $ensureMapping = @{
     Present = 'Enable'
-    Absent  = 'Disable'
+    Absent  = 'Absent'
 }
 
 foreach ( $rule in $rules )
