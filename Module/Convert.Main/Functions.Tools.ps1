@@ -27,7 +27,7 @@ function Compare-PowerStigXml
 
     if (-not $StigXccdfPath)
     {
-        $StigXccdfPath = Get-StigXccdfPath -StigXmlPath $StigXmlPath -Version $Version
+        $StigXccdfPath = Get-StigXccdfPath -StigXmlPath $StigXmlPath -Version $XccdfVersion
     }
     # Get path to the temporary STIG conversion to remove later.
     $unmatchedPath = ConvertTo-PowerStigXml -Path $StigXccdfPath -IncludeRawString -Destination $env:TEMP
