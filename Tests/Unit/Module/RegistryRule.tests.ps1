@@ -1,7 +1,11 @@
 #region Header
 using module .\..\..\..\Module\RegistryRule\RegistryRule.psm1
 . $PSScriptRoot\.tests.header.ps1
-$expressionFileList = Get-Item ..\..\..\Module\Convert.Main\Data.*.ps1
+
+$path = (Get-Item -path $PSScriptRoot).parent.parent.parent.fullname
+$path2 = $path + "\Module\Convert.Main\Data.*.ps1"
+$expressionFileList = Get-Item $path2
+
 foreach ($supportFile in $expressionFileList)
 {
     Write-Verbose "Loading $($supportFile.FullName)"
