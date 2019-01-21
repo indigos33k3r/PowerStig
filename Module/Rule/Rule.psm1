@@ -52,6 +52,7 @@ Class Rule : ICloneable
     [Boolean] $OrganizationValueRequired
     [string] $OrganizationValueTestString
     hidden [string] $DscResource
+    [string] $DuplicateOf
 
     <#
         .SYNOPSIS
@@ -102,6 +103,7 @@ Class Rule : ICloneable
         # Default Flags
         $this.IsNullOrEmpty = $false
         $this.OrganizationValueRequired = $false
+        $this.DuplicateOf = $false
     }
 
     <#
@@ -123,9 +125,18 @@ Class Rule : ICloneable
         .PARAMETER ReferenceObject
             The existing converted rules
     #>
-    [Boolean] IsDuplicateRule ( [object] $ReferenceObject )
-    {
-        return Test-DuplicateRule -ReferenceObject $ReferenceObject -DifferenceObject $this
+    [Boolean] IsDuplicateRule ([object] $ReferenceObject)
+    {           
+        $GetDuplicateRuleIdResults = Get-DuplicateRuleId -ReferenceObject $ReferenceObject -DifferenceObject $this
+        if ($GetDuplicateRuleIdResults -ne '')
+        {
+            $this.DuplicateOf = $GetDuplicateRuleIdResults
+            return $true
+        }
+        else
+        {
+            return $false
+        }
     }
 
     <#
