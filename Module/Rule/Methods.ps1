@@ -127,7 +127,7 @@ function Test-DuplicateRule
 function Get-DuplicateRuleId
 {
     [CmdletBinding()]
-    [OutputType([Boolean])]
+    [OutputType([String])]
     param
     (
         [Parameter( Mandatory = $true )]

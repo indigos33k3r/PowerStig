@@ -103,7 +103,7 @@ Class Rule : ICloneable
         # Default Flags
         $this.IsNullOrEmpty = $false
         $this.OrganizationValueRequired = $false
-        $this.DuplicateOf = $false
+        $this.DuplicateOf = ''
     }
 
     <#
