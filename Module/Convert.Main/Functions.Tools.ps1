@@ -449,7 +449,7 @@ function Get-StigXccdfPath
         [AllowNull()]
         $Version
     )
-    
+      
     if ($Version)
     {
         $versionSplit = $Version.Split('.')
