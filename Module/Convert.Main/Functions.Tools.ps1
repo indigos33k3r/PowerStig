@@ -449,92 +449,34 @@ function Get-StigXccdfPath
         [AllowNull()]
         $Version
     )
-
-    $archivePath = "$script:PsScriptRoot\StigData\Archive"
-    $xmlTitle = ($StigXmlPath.Split('\')[-1]).Trim('.xml')
-    $xmlSplit = $xmlTitle.Split('-')
+    
     if ($Version)
     {
         $versionSplit = $Version.Split('.')
     }
     else
     {
+        $xmlTitle = ($StigXmlPath.Split('\')[-1]).Trim('.xml')
+        $xmlSplit = $xmlTitle.Split('-')
         $versionSplit = $xmlSplit[3].Split('.')
     }
 
     $stigVersion = "V$($versionSplit[0])R$($versionSplit[1])"
-    $stigHash = @{
-        Technology        = $xmlSplit[0]
-        TechnologyRole    = $xmlSplit[1]
-        TechnologyVersion = $xmlSplit[2]
-    }
 
-    switch ($stigHash)
+    [xml] $xmlContent = Get-Content -Path $StigXmlPath
+    $stigId = $xmlContent.DISASTIG.Id
+    $archives = Get-ChildItem -Path "$script:PsScriptRoot\StigData\Archive" -Recurse -Include "*.xml" | Where-Object -FilterScript {$_.Name -match ".*$stigVersion"}
+    
+    foreach ($stig in $archives)
     {
-        {$PSItem.TechnologyRole -eq '2012R2'}
+        [xml] $testContent = Get-Content -Path $stig.Fullname 
+        $testId = $testContent.BenchMark.Id
+
+        if ($testId -eq $stigId)
         {
-            $directories = Get-ChildItem -Path $archivePath -Recurse | Where-Object -FilterScript {$_.Attributes -eq 'Directory'}
-            $directoryPath = ($directories | Where-Object -FilterScript {$_.Parent.Name -eq "2012R2" -and $_.Name -eq $stigHash.TechnologyVersion}).FullName
-            $xccdfFullName = (Get-ChildItem -Path $directoryPath | Where-Object -FilterScript {$_.Name -match ".*$stigVersion"}).FullName
-            break
-        }
-        {$PSItem.TechnologyVersion -in $stigTitleVariations.Office}
-        {
-            $appName = ($stigHash.TechnologyVersion | Select-String -Pattern '\D+(?=\d)').Matches.Value
-            $appYear = ($stigHash.TechnologyVersion | Select-String -Pattern '(?<=\D)\d+').Matches.Value
-            $directories = Get-ChildItem -Path $archivePath -Recurse | Where-Object -FilterScript {$_.Attributes -eq 'Directory'}
-            $directoryPath = ($directories | Where-Object -FilterScript {$_.Parent.Name -eq "Office" -and $_.Name -eq $appName}).FullName
-            $xccdfFullName = (Get-ChildItem -Path $directoryPath | Where-Object -FilterScript {$_.Name -match ".*$appYear.*$stigVersion"}).FullName
-            break
-        }
-        {$PSItem.TechnologyVersion -in $stigTitleVariations.Browser}
-        {
-            $directories = Get-ChildItem -Path $archivePath -Recurse | Where-Object -FilterScript {$_.Attributes -eq 'Directory'}
-            $directoryPath = ($directories | Where-Object -FilterScript {$_.Parent.Name -eq "Browser" -and $_.Name -eq $stigHash.TechnologyVersion}).FullName
-            $xccdfFullName = (Get-ChildItem -Path $directoryPath | Where-Object -FilterScript {$_.Name -match ".*$stigVersion"}).FullName
-            break
-        }
-        {$PSItem.TechnologyVersion -in $stigTitleVariations.ActiveDirectory}
-        {
-            $directories = Get-ChildItem -Path $archivePath -Recurse | Where-Object -FilterScript {$_.Attributes -eq 'Directory'}
-            $directoryPath = ($directories | Where-Object -FilterScript {$_.Parent.Name -eq "ActiveDirectory" -and $_.Name -eq $stigHash.TechnologyVersion}).FullName
-            $xccdfFullName = (Get-ChildItem -Path $directoryPath | Where-Object -FilterScript {$_.Name -match ".*$stigVersion"}).FullName
-            break
-        }
-        {$PSItem.Technology -eq 'SqlServer'}
-        {
-            $directories = Get-ChildItem -Path $archivePath -Recurse | Where-Object -FilterScript {$_.Attributes -eq 'Directory'}
-            $directoryPath = ($directories | Where-Object -FilterScript {$_.Parent.Name -eq $stigHash.TechnologyRole -and $_.Name -eq $stigHash.TechnologyVersion}).FullName
-            $xccdfFullName = (Get-ChildItem -Path $directoryPath | Where-Object -FilterScript {$_.Name -match ".*$stigVersion"}).FullName
-            break
-        }
-        {$PSItem.TechnologyRole -eq '10'}
-        {
-            $directoryPath = (Get-ChildItem -Path $archivePath -Recurse | Where-Object -FilterScript {$_.Attributes -eq 'Directory' -and $_.Name -eq 'Windows10'}).FullName
-            $xccdfFullName = (Get-ChildItem -Path $directoryPath | Where-Object -FilterScript {$_.Name -match ".*$stigVersion"}).FullName
-            break
-        }
-        {$PSItem.TechnologyVersion -eq 'DotNet4'}
-        {
-            $directoryPath = (Get-ChildItem -Path $archivePath -Recurse | Where-Object -FilterScript {$_.Attributes -eq 'Directory' -and $_.Name -eq 'DotNet'}).FullName
-            $xccdfFullName = (Get-ChildItem -Path $directoryPath | Where-Object -FilterScript {$_.Name -match ".*$stigVersion"}).FullName
-            break
-        }
-        {$PSItem.TechnologyVersion -eq 'FW'}
-        {
-            $directories = Get-ChildItem -Path $archivePath -Recurse | Where-Object -FilterScript {$_.Attributes -eq 'Directory'}
-            $directoryPath = ($directories | Where-Object -FilterScript {$_.Parent.Name -eq 'Firewall' -and $_.Name -eq $stigHash.Technology}).FullName
-            $xccdfFullName = (Get-ChildItem -Path $directoryPath | Where-Object -FilterScript {$_.Name -match ".*$stigVersion"}).FullName
-            break
-        }
-        {$PSItem.TechnologyVersion -match '.*OracleJre.*'}
-        {
-            $directoryPath = (Get-ChildItem -Path $archivePath -Recurse | Where-Object -FilterScript {$_.Attributes -eq 'Directory' -and $_.Name -eq 'OracleJre'}).FullName
-            $xccdfFullName = (Get-ChildItem -Path $directoryPath | Where-Object -FilterScript {$_.Name -match ".*$stigVersion"}).FullName
-            break
+            return $stig.Fullname
         }
     }
-
     if ($xccdfFullName)
     {
         return $xccdfFullName
