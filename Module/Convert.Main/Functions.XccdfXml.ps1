@@ -335,8 +335,7 @@ function Get-StigRuleList
                     [void] $global:stigSettings.Add( ( [DocumentRule]::ConvertFrom( $rule ) ) )
                 }
                 else
-                {
-                    #>
+                {#>
                     [void] $global:stigSettings.Add( $rule )
                 #}
             }

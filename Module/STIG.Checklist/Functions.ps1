@@ -107,6 +107,9 @@ function New-StigCheckList
         'source'         = $xccdfBenchmarkContent.reference.source
     }
 
+    # Ensure that we have the globalized converted rule objects for evaluation. We only want to do this once.
+    ConvertFrom-StigXccdf -Path $XccdfPath
+
     foreach ($StigInfoElement in $stigInfoElements.GetEnumerator())
     {
         $writer.WriteStartElement("SI_DATA")
@@ -174,6 +177,19 @@ function New-StigCheckList
             else
             {
                 $status = $statusMap['NotReviewed']
+            }
+
+            # Test to see if this rule is managed as a duplicate
+            $convertedRule =  $global:stigSettings | where-object Id -eq $vid
+            if ($convertedRule.DuplicateOf)
+            {
+                # How is the duplicate rule handled? If it is handled, then the duplicate is also covered
+                $originalSetting = Get-SettingsFromMof -ReferenceConfiguration $referenceConfiguration -Id $convertedRule.DuplicateOf
+                if ($originalSetting)
+                {
+                    $status = $statusMap['NotAFinding']
+                    $comments = 'Managed via PowerStigDsc - this rule is a duplicate of ' + $convertedRule.DuplicateOf
+                }
             }
         }
         elseif ($PSCmdlet.ParameterSetName -eq 'result')
