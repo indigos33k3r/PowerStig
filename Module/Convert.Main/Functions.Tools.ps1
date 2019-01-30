@@ -14,7 +14,7 @@ function Compare-PowerStigXml
         $StigXccdfPath,
 
         [Parameter()]
-        [AllowNull]
+        [AllowNull()]
         $XccdfVersion
     )
 
@@ -476,10 +476,6 @@ function Get-StigXccdfPath
         {
             return $stig.Fullname
         }
-    }
-    if ($xccdfFullName)
-    {
-        return $xccdfFullName
     }
 
     throw -Message "Cannot find xccdf for $xmlTitle. Please verify the desired xccdf is in the 'Archive' folder."
